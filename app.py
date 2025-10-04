@@ -5,7 +5,7 @@ import joblib
 # --- Load the Trained Model ---
 # This line loads the .pkl file you created earlier.
 try:
-    pipeline = joblib.load('delivery_time_model.pkl')
+    pipeline = joblib.load(r"D:\\programing\\intership 2025\\Project 4\\delivery_time_model.pkl")
     print("Model loaded successfully!")
 except FileNotFoundError:
     st.error("Error: 'delivery_time_model.pkl' not found. Please run the training script first to create the model file.")
@@ -56,4 +56,5 @@ if st.button('Predict Delivery Time'):
     prediction = pipeline.predict(input_data)
 
     # Display the result
+
     st.success(f"Predicted Delivery Time: {prediction[0]:.0f} minutes")
