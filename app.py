@@ -1,15 +1,12 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import os
 
 # --- Load the Trained Model ---
 # This line loads the .pkl file you created earlier.
-try:
-    pipeline = joblib.load(r"D:\\programing\\intership 2025\\Project 4\\delivery_time_model.pkl")
-    print("Model loaded successfully!")
-except FileNotFoundError:
-    st.error("Error: 'delivery_time_model.pkl' not found. Please run the training script first to create the model file.")
-    st.stop()
+model_path = os.path.join(os.path.dirname(__file__), 'delivery_time_model.pkl')
+pipeline = joblib.load(model_path)
 
 
 # --- Streamlit App Interface ---
@@ -58,3 +55,4 @@ if st.button('Predict Delivery Time'):
     # Display the result
 
     st.success(f"Predicted Delivery Time: {prediction[0]:.0f} minutes")
+
